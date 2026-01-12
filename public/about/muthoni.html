@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Muthoni | CBM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <script>
+        // Add Tailwind config
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2d3748',
+                        accent: '#4299e1'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <div id="navbar-container"></div>
+    
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <!-- Hero Section -->
+                    <div class="bg-gradient-to-r from-primary to-accent text-white py-12 px-8 text-center">
+                        <div class="w-40 h-40 mx-auto mb-6 rounded-full border-4 border-white overflow-hidden">
+                            <img src="/assets/images/team/muthoni.jpg" alt="Muthoni" class="w-full h-full object-cover">
+                        </div>
+                        <h1 class="text-4xl font-bold mb-4">Muthoni Kamau</h1>
+                        <p class="text-xl opacity-90">Founder & Lead Career Mentor</p>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-8">
+                        <div class="prose max-w-none">
+                            <h2 class="text-2xl font-bold text-primary mb-4">My Story</h2>
+                            <p class="text-gray-700 mb-6">
+                                With over 15 years of experience in career development and human resources, 
+                                I've dedicated my life to helping professionals unlock their full potential. 
+                                My journey began in corporate HR, where I witnessed firsthand the challenges 
+                                talented individuals face in navigating their career paths.
+                            </p>
+                            
+                            <h2 class="text-2xl font-bold text-primary mb-4">My Mission</h2>
+                            <p class="text-gray-700 mb-6">
+                                To democratize career mentorship and make professional guidance accessible 
+                                to everyone, regardless of their background or career stage. I believe that 
+                                with the right guidance and support, anyone can build a fulfilling career.
+                            </p>
+                            
+                            <h2 class="text-2xl font-bold text-primary mb-4">Qualifications</h2>
+                            <ul class="list-disc pl-5 text-gray-700 mb-6 space-y-2">
+                                <li>Master's in Organizational Psychology</li>
+                                <li>Certified Professional Career Coach (CPCC)</li>
+                                <li>HR Certification Institute (HRCI) Professional</li>
+                                <li>15+ years corporate HR experience</li>
+                                <li>Mentored 1000+ professionals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div id="footer-container"></div>
+    
+    <script>
+        async function loadComponent(containerId, filePath) {
+            try {
+                const response = await fetch(filePath);
+                const html = await response.text();
+                document.getElementById(containerId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${filePath}:`, error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('navbar-container', '/components/navbar.html');
+            loadComponent('footer-container', '/components/footer.html');
+        });
+    </script>
+</body>
+</html>
