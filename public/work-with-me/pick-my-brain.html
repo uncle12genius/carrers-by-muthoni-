@@ -7,508 +7,633 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1a365d',
-                        secondary: '#2d3748',
-                        accent: '#4299e1',
-                        lightblue: '#ebf8ff'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif']
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                        'slide-up': 'slideUp 0.3s ease-out'
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(10px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        }
-                    }
-                }
-            }
+    <style>
+        :root {
+            --primary-color: #60e0e4;
+            --primary-dark: #4bc8cc;
+            --primary-light: #d9f7f8;
+            --primary-bg: #f7fdfe;
         }
-    </script>
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f7fdfe 0%, #f0f9ff 100%);
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 30px rgba(96, 224, 228, 0.15);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(96, 224, 228, 0.2);
+        }
+        
+        .date-cell {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .date-cell:hover:not(.weekend):not(.selected) {
+            background-color: rgba(96, 224, 228, 0.1) !important;
+            transform: scale(1.05);
+        }
+        
+        .time-slot-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .time-slot-btn:hover:not(.selected-time) {
+            border-color: #60e0e4 !important;
+            background-color: rgba(96, 224, 228, 0.05) !important;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(96, 224, 228, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(96, 224, 228, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(96, 224, 228, 0); }
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #60e0e4, #4bc8cc) border-box;
+            border: 2px solid transparent;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
 </head>
-<body class="font-sans bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
-    
-    <!-- Navbar will be loaded here -->
-    <div id="navbar-container"></div>
+<body class="min-h-screen">
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-10 left-5 w-72 h-72 rounded-full bg-gradient-to-br from-[#60e0e4]/10 to-transparent filter blur-3xl opacity-50 floating"></div>
+        <div class="absolute bottom-10 right-5 w-96 h-96 rounded-full bg-gradient-to-tr from-[#60e0e4]/5 to-transparent filter blur-3xl opacity-40 floating" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/2 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-[#60e0e4]/8 to-transparent filter blur-3xl opacity-30 floating" style="animation-delay: -6s;"></div>
+    </div>
 
-    <div class="container mx-auto px-4 py-8 md:py-12">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 py-8 md:py-12">
+        <!-- Header -->
+        <div class="text-center mb-10 md:mb-16">
+            <div class="inline-flex items-center justify-center mb-4">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center shadow-lg glow-effect">
+                    <i class="fas fa-brain text-white text-2xl"></i>
+                </div>
+                <div class="ml-4 text-left">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Pick My Brain</h1>
+                    <p class="text-gray-600">Career Strategy Consultation</p>
+                </div>
+            </div>
+            <p class="text-gray-600 max-w-2xl mx-auto">Book a personalized 1-on-1 session to accelerate your career growth</p>
+        </div>
+
         <!-- Progress Steps -->
-        <div class="max-w-2xl mx-auto mb-8 md:mb-12">
-            <div class="flex items-center justify-between">
-                <div class="flex flex-col items-center relative">
-                    <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold z-10">
+        <div class="max-w-3xl mx-auto mb-12">
+            <div class="flex items-center justify-between relative">
+                <div class="absolute top-4 left-0 w-full h-1 bg-gray-200 -z-10"></div>
+                
+                <div class="flex flex-col items-center relative z-20">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] text-white flex items-center justify-center font-semibold shadow-lg pulse-animation">
                         1
                     </div>
-                    <span class="text-sm font-medium mt-2">Date & Time</span>
-                    <div class="absolute top-5 left-full w-full h-0.5 bg-gray-300 -ml-2"></div>
+                    <span class="text-sm font-medium mt-3 text-gray-800">Date & Time</span>
+                    <span class="text-xs text-gray-500 mt-1">Select your slot</span>
                 </div>
-                <div class="flex flex-col items-center relative">
-                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-semibold z-10">
+                
+                <div class="flex flex-col items-center relative z-20">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-semibold shadow-sm">
                         2
                     </div>
-                    <span class="text-sm text-gray-500 mt-2">Your Details</span>
-                    <div class="absolute top-5 left-full w-full h-0.5 bg-gray-300 -ml-2"></div>
+                    <span class="text-sm text-gray-500 mt-3">Your Details</span>
+                    <span class="text-xs text-gray-400 mt-1">Personal info</span>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-semibold">
+                
+                <div class="flex flex-col items-center relative z-20">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-semibold shadow-sm">
                         3
                     </div>
-                    <span class="text-sm text-gray-500 mt-2">Confirmation</span>
+                    <span class="text-sm text-gray-500 mt-3">Confirmation</span>
+                    <span class="text-xs text-gray-400 mt-1">Review & pay</span>
                 </div>
             </div>
         </div>
 
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Left Panel - Booking Info -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 sticky top-8">
-                        <!-- Header -->
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-br from-accent to-blue-500 rounded-xl flex items-center justify-center mr-4">
-                                <i class="fas fa-brain text-white text-xl"></i>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Panel - Session Info -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 sticky top-8 gradient-border card-hover">
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">Session Overview</h2>
+                        <div class="w-16 h-1 bg-gradient-to-r from-[#60e0e4] to-[#4bc8cc] rounded-full"></div>
+                    </div>
+
+                    <div class="space-y-5 mb-8">
+                        <div class="flex items-start p-4 bg-gradient-to-r from-[#f7fdfe] to-[#f0f9ff] rounded-xl border border-[#d9f7f8]">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-clock text-white"></i>
                             </div>
                             <div>
-                                <h1 class="text-2xl font-bold text-primary">Pick My Brain</h1>
-                                <p class="text-gray-600">Career Strategy Session</p>
+                                <h3 class="font-semibold text-gray-800 mb-1">60-Minute Session</h3>
+                                <p class="text-sm text-gray-600">Deep dive into your career goals with actionable insights</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-gradient-to-r from-[#f7fdfe] to-[#f0f9ff] rounded-xl border border-[#d9f7f8]">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-video text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-1">Video Conference</h3>
+                                <p class="text-sm text-gray-600">Google Meet or Zoom - your choice</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-gradient-to-r from-[#f7fdfe] to-[#f0f9ff] rounded-xl border border-[#d9f7f8]">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-file-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-1">Personalized Plan</h3>
+                                <p class="text-sm text-gray-600">Custom career roadmap & follow-up resources</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Section -->
+                    <div class="p-5 bg-gradient-to-r from-[#f7fdfe] to-[#f0f9ff] rounded-xl border border-[#d9f7f8] mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <p class="text-sm font-medium text-gray-600">One-time Session Fee</p>
+                                <div class="flex items-baseline">
+                                    <span class="text-3xl font-bold text-gray-800">$65</span>
+                                    <span class="text-gray-500 ml-2">/session</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs px-3 py-1 bg-[#60e0e4] text-white rounded-full font-medium">
+                                    Most Popular
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-3 bg-white rounded-lg border border-[#d9f7f8]">
+                            <i class="fas fa-gift text-[#60e0e4] mr-3"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-gray-800">Free Career Assessment</p>
+                                <p class="text-xs text-gray-600">Included with your booking</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+
+                   
+                </div>
+            </div>
+
+            <!-- Right Panel - Calendar & Booking -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden gradient-border card-hover">
+                    <!-- Header -->
+                    <div class="bg-gradient-to-r from-[#60e0e4] to-[#4bc8cc] text-white p-6 md:p-8">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between">
+                            <div>
+                                <h2 class="text-2xl font-bold mb-2">Select Your Session Time</h2>
+                                <p class="opacity-95">Choose a date and time that fits your schedule</p>
+                            </div>
+                            <div class="mt-4 md:mt-0 flex items-center bg-white/20 backdrop-blur-sm rounded-xl px-4 py-2">
+                                <i class="fas fa-globe-africa mr-2"></i>
+                                <div>
+                                    <p class="text-xs opacity-90">Time Zone</p>
+                                    <p class="font-medium">East Africa Time (EAT)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Section -->
+                    <div class="p-6 md:p-8">
+                        <!-- Month Navigation -->
+                        <div class="flex items-center justify-between mb-8">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                                    <i class="fas fa-calendar-alt text-[#60e0e4] mr-3"></i>
+                                    January 2026
+                                </h3>
+                                <p class="text-gray-600 text-sm mt-1">Click on a date to select</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="month-nav-btn w-10 h-10 rounded-full bg-gray-100 hover:bg-[#d9f7f8] flex items-center justify-center text-gray-700 hover:text-[#60e0e4] transition-colors">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="month-nav-btn w-10 h-10 rounded-full bg-gray-100 hover:bg-[#d9f7f8] flex items-center justify-center text-gray-700 hover:text-[#60e0e4] transition-colors">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Session Details -->
-                        <div class="space-y-5 mb-8">
-                            <div class="flex items-center p-3 bg-blue-50 rounded-lg">
-                                <i class="fas fa-clock text-accent mr-3 text-lg"></i>
-                                <div>
-                                    <p class="font-medium">60-Minute Session</p>
-                                    <p class="text-sm text-gray-600">Deep dive into your career goals</p>
-                                </div>
-                            </div>
+                        <!-- Week Days -->
+                        <div class="grid grid-cols-7 gap-2 mb-4">
+                            <div class="text-center text-sm font-medium text-gray-500 py-3">Mon</div>
+                            <div class="text-center text-sm font-medium text-gray-500 py-3">Tue</div>
+                            <div class="text-center text-sm font-medium text-gray-500 py-3">Wed</div>
+                            <div class="text-center text-sm font-medium text-gray-500 py-3">Thu</div>
+                            <div class="text-center text-sm font-medium text-gray-500 py-3">Fri</div>
+                            <div class="text-center text-sm font-medium text-gray-500 py-3 text-[#60e0e4]">Sat</div>
+                            <div class="text-center text-sm font-medium text-gray-500 py-3 text-[#60e0e4]">Sun</div>
+                        </div>
 
-                            <div class="flex items-center p-3 bg-blue-50 rounded-lg">
-                                <i class="fas fa-video text-accent mr-3 text-lg"></i>
-                                <div>
-                                    <p class="font-medium">Video Conference</p>
-                                    <p class="text-sm text-gray-600">Google Meet/Zoom link provided</p>
-                                </div>
-                            </div>
+                        <!-- Calendar Dates -->
+                        <div class="grid grid-cols-7 gap-2 mb-10">
+                            <!-- Week 1 -->
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div class="date-cell text-sm">1</div>
+                            <div class="date-cell text-sm">2</div>
+                            <div class="date-cell text-sm weekend">3</div>
+                            <div class="date-cell text-sm weekend">4</div>
+                            
+                            <!-- Week 2 -->
+                            <div class="date-cell text-sm">5</div>
+                            <div class="date-cell text-sm">6</div>
+                            <div class="date-cell text-sm">7</div>
+                            <div class="date-cell text-sm">8</div>
+                            <div class="date-cell text-sm selected rounded-full" style="background: linear-gradient(135deg, #60e0e4, #4bc8cc); color: white; transform: scale(1.1); box-shadow: 0 5px 15px rgba(96, 224, 228, 0.4);">9</div>
+                            <div class="date-cell text-sm weekend">10</div>
+                            <div class="date-cell text-sm weekend">11</div>
+                            
+                            <!-- Week 3 -->
+                            <div class="date-cell text-sm">12</div>
+                            <div class="date-cell text-sm">13</div>
+                            <div class="date-cell text-sm">14</div>
+                            <div class="date-cell text-sm">15</div>
+                            <div class="date-cell text-sm">16</div>
+                            <div class="date-cell text-sm weekend">17</div>
+                            <div class="date-cell text-sm weekend">18</div>
+                            
+                            <!-- Week 4 -->
+                            <div class="date-cell text-sm">19</div>
+                            <div class="date-cell text-sm">20</div>
+                            <div class="date-cell text-sm">21</div>
+                            <div class="date-cell text-sm">22</div>
+                            <div class="date-cell text-sm">23</div>
+                            <div class="date-cell text-sm weekend">24</div>
+                            <div class="date-cell text-sm weekend">25</div>
+                            
+                            <!-- Week 5 -->
+                            <div class="date-cell text-sm">26</div>
+                            <div class="date-cell text-sm">27</div>
+                            <div class="date-cell text-sm">28</div>
+                            <div class="date-cell text-sm">29</div>
+                            <div class="date-cell text-sm">30</div>
+                            <div class="date-cell text-sm weekend">31</div>
+                        </div>
 
-                            <div class="flex items-center p-3 bg-blue-50 rounded-lg">
-                                <i class="fas fa-chart-line text-accent mr-3 text-lg"></i>
-                                <div>
-                                    <p class="font-medium">Personalized Strategy</p>
-                                    <p class="text-sm text-gray-600">Custom action plan included</p>
+                        <!-- Selected Date Display -->
+                        <div class="mb-8 p-5 bg-gradient-to-r from-[#f7fdfe] to-[#f0f9ff] rounded-xl border border-[#d9f7f8]">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between">
+                                <div class="flex items-center mb-4 md:mb-0">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center mr-4">
+                                        <i class="fas fa-calendar-day text-white"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-600 mb-1">Selected Date</p>
+                                        <p id="selected-date-display" class="font-semibold text-gray-800 text-lg">Friday, January 9, 2026</p>
+                                    </div>
                                 </div>
+                                <button class="text-sm text-[#60e0e4] font-medium hover:text-[#4bc8cc] transition-colors flex items-center">
+                                    <i class="fas fa-edit mr-2"></i>
+                                    Change date
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Price & CTA -->
-                        <div class="border-t pt-6">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="text-gray-700">Session Fee</span>
-                                <div class="text-right">
-                                    <span class="text-3xl font-bold text-primary">$65</span>
-                                    <span class="text-gray-600">/session</span>
+                        <!-- Time Slots -->
+                        <div id="time-slots-section" class="mb-10">
+                            <div class="flex items-center justify-between mb-6">
+                                <h4 class="text-lg font-semibold text-gray-800 flex items-center">
+                                    <i class="fas fa-clock text-[#60e0e4] mr-3"></i>
+                                    Available Time Slots
+                                </h4>
+                                <div class="text-sm text-gray-600 flex items-center">
+                                    <i class="fas fa-info-circle text-[#60e0e4] mr-2"></i>
+                                    All times in EAT
                                 </div>
                             </div>
                             
-                            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 rounded-xl p-4 mb-6">
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+                                <button class="time-slot-btn text-sm py-4 px-3 rounded-xl border border-gray-200 hover:border-[#60e0e4] bg-white hover:bg-[#f7fdfe]">
+                                    <span class="font-medium text-gray-800">9:00 AM</span>
+                                    <span class="text-xs text-gray-500 block mt-1">60 minutes</span>
+                                </button>
+                                <button class="time-slot-btn text-sm py-4 px-3 rounded-xl border border-gray-200 hover:border-[#60e0e4] bg-white hover:bg-[#f7fdfe]">
+                                    <span class="font-medium text-gray-800">10:30 AM</span>
+                                    <span class="text-xs text-gray-500 block mt-1">60 minutes</span>
+                                </button>
+                                <button class="time-slot-btn text-sm py-4 px-3 rounded-xl border-2 border-[#60e0e4] bg-gradient-to-r from-[#f7fdfe] to-[#f0f9ff] selected-time">
+                                    <span class="font-medium text-gray-800">2:00 PM</span>
+                                    <span class="text-xs text-gray-500 block mt-1">60 minutes</span>
+                                    <div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#60e0e4] flex items-center justify-center">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                </button>
+                                <button class="time-slot-btn text-sm py-4 px-3 rounded-xl border border-gray-200 hover:border-[#60e0e4] bg-white hover:bg-[#f7fdfe]">
+                                    <span class="font-medium text-gray-800">3:30 PM</span>
+                                    <span class="text-xs text-gray-500 block mt-1">60 minutes</span>
+                                </button>
+                                <button class="time-slot-btn text-sm py-4 px-3 rounded-xl border border-gray-200 hover:border-[#60e0e4] bg-white hover:bg-[#f7fdfe]">
+                                    <span class="font-medium text-gray-800">5:00 PM</span>
+                                    <span class="text-xs text-gray-500 block mt-1">60 minutes</span>
+                                </button>
+                                <button class="time-slot-btn text-sm py-4 px-3 rounded-xl border border-gray-200 hover:border-[#60e0e4] bg-white hover:bg-[#f7fdfe]">
+                                    <span class="font-medium text-gray-800">6:30 PM</span>
+                                    <span class="text-xs text-gray-500 block mt-1">60 minutes</span>
+                                </button>
+                            </div>
+
+                            <!-- Selected Time Display -->
+                            <div id="selected-time-display" class="p-5 bg-gradient-to-r from-[#60e0e4] to-[#4bc8cc] rounded-2xl text-white">
                                 <div class="flex items-center">
-                                    <i class="fas fa-bolt text-green-500 mr-3"></i>
-                                    <div>
-                                        <p class="font-medium text-green-800">Limited Time Offer</p>
-                                        <p class="text-sm text-green-600">Book now and get a free career assessment</p>
+                                    <div class="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-check-circle text-2xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h5 class="font-bold text-lg mb-1">Time Slot Selected!</h5>
+                                        <p id="selected-time-text" class="opacity-95">Friday, January 9 at 2:00 PM (60 minutes)</p>
+                                    </div>
+                                    <div class="text-right hidden md:block">
+                                        <div class="text-xs bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 inline-block">
+                                            Reserved for 15 minutes
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4">
                             <button id="book-now-btn" 
-                                    class="w-full bg-gradient-to-r from-primary to-accent text-white font-semibold py-4 rounded-xl hover:shadow-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]">
-                                Continue to Booking
+                                    class="flex-1 bg-gradient-to-r from-[#60e0e4] to-[#4bc8cc] text-white font-semibold py-4 rounded-xl hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] glow-effect">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-calendar-check mr-3"></i>
+                                    <span>Book This Session</span>
+                                </div>
+                            </button>
+                            
+                            <button id="continue-btn" 
+                                    class="flex-1 bg-white border-2 border-[#60e0e4] text-[#60e0e4] font-semibold py-4 rounded-xl hover:bg-[#f7fdfe] transition-all">
+                                <div class="flex items-center justify-center">
+                                    <span>Continue to Details</span>
+                                    <i class="fas fa-arrow-right ml-3"></i>
+                                </div>
                             </button>
                         </div>
 
-                        <!-- Support Info -->
-                        <div class="mt-6 pt-6 border-t text-center">
-                            <p class="text-sm text-gray-600 mb-2">
-                                <i class="fas fa-question-circle mr-2"></i>
-                                Need help? <a href="#" class="text-accent font-medium hover:underline">Contact Support</a>
-                            </p>
-                            <p class="text-xs text-gray-500">
-                                <i class="fas fa-shield-alt mr-1"></i>
-                                Secure booking • Cancel anytime
-                            </p>
+                        <!-- Additional Options -->
+                        <div class="mt-8 pt-8 border-t border-gray-100">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between">
+                                <div class="flex items-center text-sm text-gray-600 mb-4 md:mb-0">
+                                    <i class="fas fa-question-circle text-[#60e0e4] mr-2"></i>
+                                    <span>Need a different time?</span>
+                                </div>
+                                <button class="text-sm text-[#60e0e4] font-medium hover:text-[#4bc8cc] transition-colors flex items-center justify-center md:justify-start">
+                                    <i class="fas fa-plus-circle mr-2"></i>
+                                    Request Custom Time Slot
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Panel - Calendar & Time Selection -->
-                <div class="lg:col-span-2">
-                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-                        <!-- Header -->
-                        <div class="bg-gradient-to-r from-primary to-secondary text-white p-6 md:p-8">
-                            <h2 class="text-2xl font-bold mb-2">Select Your Preferred Time</h2>
-                            <p class="opacity-90">Choose a date and time that works best for you</p>
+                <!-- Benefits Cards -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover gradient-border">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center mb-5">
+                            <i class="fas fa-bullseye text-white text-xl"></i>
                         </div>
-
-                        <!-- Timezone Info -->
-                        <div class="p-6 border-b">
-                            <div class="flex flex-wrap items-center justify-between">
-                                <div class="flex items-center mb-3 md:mb-0">
-                                    <i class="fas fa-globe-africa text-accent mr-3 text-lg"></i>
-                                    <div>
-                                        <p class="font-medium">Time Zone</p>
-                                        <p class="text-sm text-gray-600">East Africa Time (EAT) - Nairobi</p>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-100 rounded-lg px-4 py-2">
-                                    <span class="text-sm font-medium">Today: </span>
-                                    <span id="current-date" class="text-gray-700"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Calendar Section -->
-                        <div class="p-6 md:p-8">
-                            <!-- Month Navigation -->
-                            <div class="flex items-center justify-between mb-8">
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">January 2026</h3>
-                                    <p class="text-gray-600">Select an available date</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="month-nav-btn w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </button>
-                                    <button class="month-nav-btn w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Week Days -->
-                            <div class="grid grid-cols-7 gap-2 mb-4">
-                                <div class="text-center font-medium text-gray-500 py-2">Mon</div>
-                                <div class="text-center font-medium text-gray-500 py-2">Tue</div>
-                                <div class="text-center font-medium text-gray-500 py-2">Wed</div>
-                                <div class="text-center font-medium text-gray-500 py-2">Thu</div>
-                                <div class="text-center font-medium text-gray-500 py-2">Fri</div>
-                                <div class="text-center font-medium text-gray-500 py-2 text-accent">Sat</div>
-                                <div class="text-center font-medium text-gray-500 py-2 text-accent">Sun</div>
-                            </div>
-
-                            <!-- Calendar Dates -->
-                            <div class="grid grid-cols-7 gap-2 mb-8">
-                                <!-- Empty spaces for Jan 2026 (starts on Thursday) -->
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div class="date-cell">1</div>
-                                <div class="date-cell">2</div>
-                                <div class="date-cell weekend">3</div>
-                                <div class="date-cell weekend">4</div>
-                                
-                                <!-- Week 2 -->
-                                <div class="date-cell">5</div>
-                                <div class="date-cell">6</div>
-                                <div class="date-cell">7</div>
-                                <div class="date-cell">8</div>
-                                <div class="date-cell selected">9</div>
-                                <div class="date-cell weekend">10</div>
-                                <div class="date-cell weekend">11</div>
-                                
-                                <!-- Week 3 -->
-                                <div class="date-cell">12</div>
-                                <div class="date-cell">13</div>
-                                <div class="date-cell">14</div>
-                                <div class="date-cell">15</div>
-                                <div class="date-cell">16</div>
-                                <div class="date-cell weekend">17</div>
-                                <div class="date-cell weekend">18</div>
-                                
-                                <!-- Week 4 -->
-                                <div class="date-cell">19</div>
-                                <div class="date-cell">20</div>
-                                <div class="date-cell">21</div>
-                                <div class="date-cell">22</div>
-                                <div class="date-cell">23</div>
-                                <div class="date-cell weekend">24</div>
-                                <div class="date-cell weekend">25</div>
-                                
-                                <!-- Week 5 -->
-                                <div class="date-cell">26</div>
-                                <div class="date-cell">27</div>
-                                <div class="date-cell">28</div>
-                                <div class="date-cell">29</div>
-                                <div class="date-cell">30</div>
-                                <div class="date-cell weekend">31</div>
-                            </div>
-
-                            <!-- Time Slots -->
-                            <div id="time-slots-section" class="animate-slide-up">
-                                <h4 class="text-lg font-semibold mb-4 flex items-center">
-                                    <i class="fas fa-clock text-accent mr-2"></i>
-                                    Available Time Slots for 
-                                    <span id="selected-date-text" class="ml-2 text-primary">Friday, January 9</span>
-                                </h4>
-                                
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
-                                    <button class="time-slot-btn">
-                                        <span>9:00 AM</span>
-                                        <span class="text-xs text-gray-500">60 min</span>
-                                    </button>
-                                    <button class="time-slot-btn">
-                                        <span>10:30 AM</span>
-                                        <span class="text-xs text-gray-500">60 min</span>
-                                    </button>
-                                    <button class="time-slot-btn selected">
-                                        <span>2:00 PM</span>
-                                        <span class="text-xs text-gray-500">60 min</span>
-                                    </button>
-                                    <button class="time-slot-btn">
-                                        <span>3:30 PM</span>
-                                        <span class="text-xs text-gray-500">60 min</span>
-                                    </button>
-                                    <button class="time-slot-btn">
-                                        <span>5:00 PM</span>
-                                        <span class="text-xs text-gray-500">60 min</span>
-                                    </button>
-                                    <button class="time-slot-btn">
-                                        <span>6:30 PM</span>
-                                        <span class="text-xs text-gray-500">60 min</span>
-                                    </button>
-                                </div>
-
-                                <!-- Early/Late Slots -->
-                                <div class="mb-8">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <h5 class="font-medium text-gray-700">Need a different time?</h5>
-                                        <button class="text-accent font-medium hover:underline flex items-center">
-                                            <i class="fas fa-plus mr-1"></i>
-                                            Request custom slot
-                                        </button>
-                                    </div>
-                                    <div class="bg-gray-50 rounded-xl p-4">
-                                        <p class="text-sm text-gray-600 mb-2">
-                                            <i class="fas fa-info-circle text-accent mr-2"></i>
-                                            Weekend and evening slots are available upon request
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Confirmation Section -->
-                            <div id="confirmation-section" class="hidden animate-fade-in">
-                                <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-6">
-                                    <div class="flex items-center mb-4">
-                                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                                            <i class="fas fa-calendar-check text-green-600 text-xl"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-green-800">Time Slot Selected!</h4>
-                                            <p id="selected-slot-details" class="text-green-600">Friday, January 9 at 2:00 PM</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-sm text-green-700">
-                                        <i class="fas fa-check-circle mr-2"></i>
-                                        Your spot is reserved for 15 minutes. Continue to secure your booking.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-3">Clear Career Roadmap</h4>
+                        <p class="text-sm text-gray-600">Leave with a personalized action plan tailored to your goals</p>
                     </div>
-
-                    <!-- Additional Info -->
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white rounded-xl p-6 shadow-sm border">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                                <i class="fas fa-handshake text-accent text-xl"></i>
-                            </div>
-                            <h4 class="font-semibold mb-2">What to Expect</h4>
-                            <p class="text-sm text-gray-600">Personalized career strategy session with actionable insights</p>
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover gradient-border">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center mb-5">
+                            <i class="fas fa-network-wired text-white text-xl"></i>
                         </div>
-                        
-                        <div class="bg-white rounded-xl p-6 shadow-sm border">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                                <i class="fas fa-undo-alt text-accent text-xl"></i>
-                            </div>
-                            <h4 class="font-semibold mb-2">Flexible Rescheduling</h4>
-                            <p class="text-sm text-gray-600">Change your appointment up to 24 hours before</p>
+                        <h4 class="font-semibold text-gray-800 mb-3">Industry Insights</h4>
+                        <p class="text-sm text-gray-600">Get insider knowledge about your target industry</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover gradient-border">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#60e0e4] to-[#4bc8cc] flex items-center justify-center mb-5">
+                            <i class="fas fa-user-friends text-white text-xl"></i>
                         </div>
-                        
-                        <div class="bg-white rounded-xl p-6 shadow-sm border">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                                <i class="fas fa-file-alt text-accent text-xl"></i>
-                            </div>
-                            <h4 class="font-semibold mb-2">Follow-up Resources</h4>
-                            <p class="text-sm text-gray-600">Receive summary notes and resources after session</p>
-                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-3">Ongoing Support</h4>
+                        <p class="text-sm text-gray-600">30 days of follow-up support after your session</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer will be loaded here -->
-    <div id="footer-container"></div>
-
-    <!-- JavaScript -->
     <script>
-        // Set current date
-        document.addEventListener('DOMContentLoaded', function() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
-            
-            // Load components
-            loadComponents();
-        });
-
-        // Load navbar and footer
-        async function loadComponents() {
-            try {
-                const navbar = await fetch('/components/navbar.html');
-                const footer = await fetch('/components/footer.html');
-                
-                if (navbar.ok) {
-                    document.getElementById('navbar-container').innerHTML = await navbar.text();
-                }
-                
-                if (footer.ok) {
-                    document.getElementById('footer-container').innerHTML = await footer.text();
-                }
-            } catch (error) {
-                console.log('Components loaded from local functions');
-            }
-        }
-
-        // Calendar functionality
-        document.querySelectorAll('.date-cell').forEach(cell => {
-            if (!cell.classList.contains('weekend')) {
-                cell.addEventListener('click', function() {
-                    // Remove selection from all dates
-                    document.querySelectorAll('.date-cell').forEach(c => {
-                        c.classList.remove('selected');
-                    });
-                    
-                    // Add selection to clicked date
-                    this.classList.add('selected');
-                    
-                    // Update selected date text
-                    const dateText = `Friday, January ${this.textContent}`;
-                    document.getElementById('selected-date-text').textContent = dateText;
-                    
-                    // Show confirmation section
-                    document.getElementById('confirmation-section').classList.remove('hidden');
-                    document.getElementById('selected-slot-details').textContent = 
-                        `${dateText} at 2:00 PM`;
-                    
-                    // Scroll to time slots
-                    document.getElementById('time-slots-section').scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Enhanced Date Selection
+        document.querySelectorAll('.date-cell:not(.weekend)').forEach(cell => {
+            cell.addEventListener('click', function() {
+                // Remove selection from all dates
+                document.querySelectorAll('.date-cell').forEach(c => {
+                    c.classList.remove('selected');
+                    c.style.background = '';
+                    c.style.color = '';
+                    c.style.transform = '';
+                    c.style.boxShadow = '';
                 });
-            }
+                
+                // Add selection with gradient
+                this.classList.add('selected');
+                this.style.background = 'linear-gradient(135deg, #60e0e4, #4bc8cc)';
+                this.style.color = 'white';
+                this.style.transform = 'scale(1.1)';
+                this.style.boxShadow = '0 5px 15px rgba(96, 224, 228, 0.4)';
+                
+                // Update selected date display
+                const day = this.textContent;
+                const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const dateObj = new Date(2026, 0, parseInt(day));
+                const weekday = weekdays[dateObj.getDay()];
+                const dateText = `${weekday}, January ${day}, 2026`;
+                document.getElementById('selected-date-display').textContent = dateText;
+                
+                // Update selected time display
+                const selectedTime = document.querySelector('.selected-time span:first-child').textContent;
+                document.getElementById('selected-time-text').textContent = 
+                    `${weekday}, January ${day} at ${selectedTime} (60 minutes)`;
+            });
         });
 
-        // Time slot selection
+        // Enhanced Time Slot Selection
         document.querySelectorAll('.time-slot-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 // Remove selection from all time slots
                 document.querySelectorAll('.time-slot-btn').forEach(b => {
-                    b.classList.remove('selected');
+                    b.classList.remove('selected-time');
+                    b.style.borderColor = '';
+                    b.style.background = '';
+                    
+                    // Remove check icon if exists
+                    const checkIcon = b.querySelector('.fa-check');
+                    if (checkIcon) {
+                        checkIcon.parentElement.remove();
+                    }
                 });
                 
-                // Add selection to clicked slot
-                this.classList.add('selected');
+                // Add selection
+                this.classList.add('selected-time');
+                this.style.borderColor = '#60e0e4';
+                this.style.borderWidth = '2px';
+                this.style.background = 'linear-gradient(to right, #f7fdfe, #f0f9ff)';
                 
-                // Update confirmation details
-                const dateText = document.getElementById('selected-date-text').textContent;
+                // Add check icon
+                const checkDiv = document.createElement('div');
+                checkDiv.className = 'absolute top-2 right-2 w-6 h-6 rounded-full bg-[#60e0e4] flex items-center justify-center';
+                checkDiv.innerHTML = '<i class="fas fa-check text-white text-xs"></i>';
+                this.style.position = 'relative';
+                this.appendChild(checkDiv);
+                
+                // Update selected time display
                 const timeText = this.querySelector('span:first-child').textContent;
-                document.getElementById('selected-slot-details').textContent = 
-                    `${dateText} at ${timeText}`;
-                
-                // Show confirmation section if not already visible
-                document.getElementById('confirmation-section').classList.remove('hidden');
+                const selectedDate = document.querySelector('.date-cell.selected');
+                if (selectedDate) {
+                    const day = selectedDate.textContent;
+                    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                    const dateObj = new Date(2026, 0, parseInt(day));
+                    const weekday = weekdays[dateObj.getDay()];
+                    document.getElementById('selected-time-text').textContent = 
+                        `${weekday}, January ${day} at ${timeText} (60 minutes)`;
+                } else {
+                    document.getElementById('selected-time-text').textContent = 
+                        `Friday, January 9 at ${timeText} (60 minutes)`;
+                }
             });
         });
 
-        // Book Now Button
+        // Enhanced Book Now Button
         document.getElementById('book-now-btn').addEventListener('click', function() {
             const selectedDate = document.querySelector('.date-cell.selected');
-            const selectedTime = document.querySelector('.time-slot-btn.selected');
+            const selectedTime = document.querySelector('.selected-time');
             
             if (!selectedDate || !selectedTime) {
-                // Show error notification
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg z-50 animate-slide-up';
-                errorDiv.innerHTML = `
+                // Create and show notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-6 right-6 bg-gradient-to-r from-[#ff6b6b] to-[#ff8787] text-white px-6 py-4 rounded-xl shadow-xl z-50 transform transition-all duration-300 translate-x-full';
+                notification.innerHTML = `
                     <div class="flex items-center">
-                        <i class="fas fa-exclamation-circle mr-3"></i>
-                        <span>Please select a date and time first</span>
+                        <i class="fas fa-exclamation-triangle text-xl mr-3"></i>
+                        <div>
+                            <p class="font-semibold">Please select date and time</p>
+                            <p class="text-sm opacity-90">Choose a date from calendar and a time slot</p>
+                        </div>
                     </div>
                 `;
-                document.body.appendChild(errorDiv);
+                document.body.appendChild(notification);
                 
+                // Animate in
                 setTimeout(() => {
-                    errorDiv.remove();
-                }, 3000);
+                    notification.style.transform = 'translateX(0)';
+                }, 10);
                 
-                // Scroll to calendar
-                document.querySelector('.date-cell.selected')?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                }) || document.getElementById('time-slots-section').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                // Remove after 4 seconds
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => notification.remove(), 300);
+                }, 4000);
                 
                 return;
             }
             
-            // Show success animation
-            this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
-            this.classList.add('bg-green-600');
+            // Show loading state
+            const originalHTML = this.innerHTML;
+            this.innerHTML = `
+                <div class="flex items-center justify-center">
+                    <div class="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+                    <span>Processing Your Booking...</span>
+                </div>
+            `;
+            this.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Success animation
+                this.innerHTML = `
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-check-circle text-xl mr-3"></i>
+                        <span>Successfully Booked!</span>
+                    </div>
+                `;
+                this.style.background = 'linear-gradient(to right, #10b981, #34d399)';
+                
+                // Show success modal (simplified)
+                setTimeout(() => {
+                    alert('Booking confirmed! You will receive a confirmation email shortly.');
+                    this.innerHTML = originalHTML;
+                    this.disabled = false;
+                    this.style.background = 'linear-gradient(to right, #60e0e4, #4bc8cc)';
+                }, 1500);
+            }, 2000);
+        });
+
+        // Enhanced Continue Button
+        document.getElementById('continue-btn').addEventListener('click', function() {
+            const selectedDate = document.querySelector('.date-cell.selected');
+            const selectedTime = document.querySelector('.selected-time');
+            
+            if (!selectedDate || !selectedTime) {
+                alert('Please select both date and time before continuing');
+                return;
+            }
+            
+            // Show loading
+            this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Continuing...';
+            this.disabled = true;
             
             setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-check mr-2"></i> Booking Confirmed!';
-                this.classList.remove('bg-green-600');
-                this.classList.add('bg-green-500');
-                
-                // Redirect to next step after delay
-                setTimeout(() => {
-                    window.location.href = '/booking-details.html';
-                }, 1500);
+                alert('Proceeding to next step...');
+                // In real app: window.location.href = '/booking-details';
+                this.innerHTML = 'Continue to Details <i class="fas fa-arrow-right ml-3"></i>';
+                this.disabled = false;
             }, 1000);
         });
 
-        // Month navigation
+        // Month Navigation (with visual feedback)
         document.querySelectorAll('.month-nav-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                // Add ripple effect
+                // Ripple effect
                 const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
-                const x = event.clientX - rect.left - size / 2;
-                const y = event.clientY - rect.top - size / 2;
+                const x = event.clientX - rect.left - size/2;
+                const y = event.clientY - rect.top - size/2;
                 
                 ripple.style.cssText = `
                     position: absolute;
                     border-radius: 50%;
-                    background: rgba(255,255,255,0.5);
+                    background: rgba(96, 224, 228, 0.3);
                     transform: scale(0);
                     animation: ripple 0.6s linear;
                     width: ${size}px;
@@ -520,68 +645,34 @@
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 600);
                 
-                // Simple month change logic (demo)
-                alert('In a real app, this would change the month calendar');
+                // Simulate month change
+                const currentMonth = document.querySelector('h3.text-gray-800');
+                const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+                const currentIndex = months.indexOf(currentMonth.textContent.split(' ')[0]);
+                let newIndex;
+                
+                if (this.querySelector('.fa-chevron-left')) {
+                    newIndex = currentIndex === 0 ? 11 : currentIndex - 1;
+                } else {
+                    newIndex = currentIndex === 11 ? 0 : currentIndex + 1;
+                }
+                
+                currentMonth.innerHTML = `<i class="fas fa-calendar-alt text-[#60e0e4] mr-3"></i>${months[newIndex]} 2026`;
             });
         });
-    </script>
 
-    <style>
-        /* Custom Styles */
-        .date-cell {
-            @apply w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center font-medium cursor-pointer transition-all duration-200;
-        }
-        
-        .date-cell:hover:not(.weekend) {
-            @apply bg-blue-100 text-primary transform scale-105;
-        }
-        
-        .date-cell.selected {
-            @apply bg-gradient-to-br from-primary to-accent text-white shadow-lg transform scale-105;
-        }
-        
-        .date-cell.weekend {
-            @apply text-gray-400 cursor-not-allowed;
-        }
-        
-        .time-slot-btn {
-            @apply border-2 border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center transition-all duration-200 hover:border-accent hover:bg-blue-50 hover:shadow-sm;
-        }
-        
-        .time-slot-btn.selected {
-            @apply border-accent bg-blue-50 text-primary font-semibold shadow-sm;
-        }
-        
-        /* Ripple animation */
-        @keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
             }
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .date-cell {
-                @apply w-10 h-10 text-sm;
-            }
-        }
-        
-        /* Loading animation for components */
-        #navbar-container:empty::before,
-        #footer-container:empty::before {
-            content: '';
-            display: block;
-            height: 60px;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-        
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-    </style>
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
