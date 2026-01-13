@@ -6,18 +6,21 @@
     <title>About Muthoni | CBM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <script>
-        // Add Tailwind config
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         primary: '#1a365d',
                         secondary: '#2d3748',
-                        accent: '#4299e1'
+                        accent: '#4299e1',
+                        light: '#ebf8ff'
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                     }
                 }
             }
@@ -30,50 +33,265 @@
         .transition-all {
             transition: all 0.3s ease;
         }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
+<body class="font-sans bg-gradient-to-br from-gray-50 to-blue-50">
     <div id="navbar-container"></div>
     
-    <main class="py-16">
+    <!-- Background decorative elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+    </div>
+
+    <main class="relative py-12 md:py-20">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <!-- Hero Section -->
-                    <div class="bg-gradient-to-r from-primary to-accent text-white py-12 px-8 text-center">
-                        <div class="w-40 h-40 mx-auto mb-6 rounded-full border-4 border-white overflow-hidden">
-                            <img src="/assets/images/team/muthoni.jpg" alt="Muthoni" class="w-full h-full object-cover">
+            <!-- Page Header -->
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 animate-fadeInUp">
+                <div class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-accent to-blue-500 rounded-2xl mb-6 shadow-lg">
+                    <i class="fas fa-user text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">Meet Muthoni Maina </h1>
+                <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-sm">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                    <span class="text-lg font-medium text-secondary">Founder & Lead Career Mentor</span>
+                </div>
+            </div>
+
+            <!-- Main Content Card -->
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
+                    <!-- Profile Section - Left -->
+                    <div class="lg:col-span-4 animate-fadeInUp" style="animation-delay: 0.2s;">
+                        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden sticky top-8">
+                            <!-- Profile Image -->
+                            <div class="relative">
+                                <div class="h-48 bg-gradient-to-r from-primary via-secondary to-accent"></div>
+                                <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white bg-white shadow-xl overflow-hidden">
+                                        <img src="/assets/images/team/muthoni.jpg" alt="Muthoni" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Profile Info -->
+                            <div class="pt-20 pb-8 px-6 text-center">
+                                <h2 class="text-2xl font-bold text-primary mb-2">Muthoni </h2>
+                                <p class="text-accent font-medium mb-6">Career Development Expert</p>
+                                
+                                <!-- Stats -->
+                                <div class="grid grid-cols-3 gap-4 mb-8">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-primary">15+</div>
+                                        <div class="text-sm text-gray-600">Years Experience</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-primary">1000+</div>
+                                        <div class="text-sm text-gray-600">Professionals Mentored</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-primary">5</div>
+                                        <div class="text-sm text-gray-600">Certifications</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contact Button -->
+                                <a href="/public/contact.html" 
+                                   class="block w-full bg-gradient-to-r from-accent to-blue-500 text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transition-all transform hover:-translate-y-1">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    Book a Consultation
+                                </a>
+                            </div>
+                            
+                            <!-- Social Links -->
+                            <div class="border-t py-6 px-6">
+                                <p class="text-sm font-medium text-gray-600 mb-4 text-center">Connect with Muthoni</p>
+                                <div class="flex justify-center space-x-4">
+                                    <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-200">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-200">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-200">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <h1 class="text-4xl font-bold mb-4">Muthoni Kamau</h1>
-                        <p class="text-xl opacity-90">Founder & Lead Career Mentor</p>
                     </div>
-                    
-                    <!-- Content -->
-                    <div class="p-8">
-                        <div class="prose max-w-none">
-                            <h2 class="text-2xl font-bold text-primary mb-4">My Story</h2>
-                            <p class="text-gray-700 mb-6">
-                                With over 15 years of experience in career development and human resources, 
-                                I've dedicated my life to helping professionals unlock their full potential. 
-                                My journey began in corporate HR, where I witnessed firsthand the challenges 
-                                talented individuals face in navigating their career paths.
-                            </p>
-                            
-                            <h2 class="text-2xl font-bold text-primary mb-4">My Mission</h2>
-                            <p class="text-gray-700 mb-6">
-                                To democratize career mentorship and make professional guidance accessible 
-                                to everyone, regardless of their background or career stage. I believe that 
-                                with the right guidance and support, anyone can build a fulfilling career.
-                            </p>
-                            
-                            <h2 class="text-2xl font-bold text-primary mb-4">Qualifications</h2>
-                            <ul class="list-disc pl-5 text-gray-700 mb-6 space-y-2">
-                                <li>Master's in Organizational Psychology</li>
-                                <li>Certified Professional Career Coach (CPCC)</li>
-                                <li>HR Certification Institute (HRCI) Professional</li>
-                                <li>15+ years corporate HR experience</li>
-                                <li>Mentored 1000+ professionals</li>
-                            </ul>
+
+                    <!-- Content Section - Right -->
+                    <div class="lg:col-span-8 space-y-8">
+                        <!-- Story Section -->
+                        <div class="animate-fadeInUp" style="animation-delay: 0.4s;">
+                            <div class="bg-white rounded-3xl shadow-xl p-8">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-100 to-accent/20 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fas fa-book-open text-accent text-xl"></i>
+                                    </div>
+                                    <h2 class="text-3xl font-bold text-primary">My Story</h2>
+                                </div>
+                                <div class="relative pl-6 border-l-4 border-accent/30">
+                                    <p class="text-gray-700 text-lg leading-relaxed">
+                                        With over 15 years of experience in career development and human resources, 
+                                        I've dedicated my life to helping professionals unlock their full potential. 
+                                        My journey began in corporate HR, where I witnessed firsthand the challenges 
+                                        talented individuals face in navigating their career paths.
+                                    </p>
+                                    <div class="absolute -left-2 top-0 w-4 h-4 bg-accent rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mission Section -->
+                        <div class="animate-fadeInUp" style="animation-delay: 0.6s;">
+                            <div class="bg-gradient-to-r from-primary to-secondary rounded-3xl shadow-xl overflow-hidden">
+                                <div class="p-8 text-white">
+                                    <div class="flex items-center mb-6">
+                                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                                            <i class="fas fa-bullseye text-white text-xl"></i>
+                                        </div>
+                                        <h2 class="text-3xl font-bold">My Mission</h2>
+                                    </div>
+                                    <div class="relative pl-6 border-l-4 border-white/30">
+                                        <p class="text-lg leading-relaxed opacity-95">
+                                            To democratize career mentorship and make professional guidance accessible 
+                                            to everyone, regardless of their background or career stage. I believe that 
+                                            with the right guidance and support, anyone can build a fulfilling career.
+                                        </p>
+                                        <div class="absolute -left-2 top-0 w-4 h-4 bg-white rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Qualifications Section -->
+                        <div class="animate-fadeInUp" style="animation-delay: 0.8s;">
+                            <div class="bg-white rounded-3xl shadow-xl p-8">
+                                <div class="flex items-center mb-8">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-green-100 to-green-500/20 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fas fa-graduation-cap text-green-600 text-xl"></i>
+                                    </div>
+                                    <h2 class="text-3xl font-bold text-primary">Qualifications & Expertise</h2>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Qualification 1 -->
+                                    <div class="bg-gradient-to-br from-blue-50 to-accent/10 rounded-2xl p-6 border border-blue-100">
+                                        <div class="flex items-start">
+                                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-university text-accent"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold text-gray-800 mb-1">Master's in Organizational Psychology</h3>
+                                                <p class="text-gray-600 text-sm">Specialized in career development and human behavior</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Qualification 2 -->
+                                    <div class="bg-gradient-to-br from-blue-50 to-accent/10 rounded-2xl p-6 border border-blue-100">
+                                        <div class="flex items-start">
+                                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-certificate text-accent"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold text-gray-800 mb-1">Certified Professional Career Coach (CPCC)</h3>
+                                                <p class="text-gray-600 text-sm">Internationally recognized coaching certification</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Qualification 3 -->
+                                    <div class="bg-gradient-to-br from-blue-50 to-accent/10 rounded-2xl p-6 border border-blue-100">
+                                        <div class="flex items-start">
+                                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-briefcase text-accent"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold text-gray-800 mb-1">HR Certification Institute (HRCI) Professional</h3>
+                                                <p class="text-gray-600 text-sm">Expertise in human resources and talent management</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Qualification 4 -->
+                                    <div class="bg-gradient-to-br from-blue-50 to-accent/10 rounded-2xl p-6 border border-blue-100">
+                                        <div class="flex items-start">
+                                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                                <i class="fas fa-chart-line text-accent"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-bold text-gray-800 mb-1">15+ Years Corporate HR Experience</h3>
+                                                <p class="text-gray-600 text-sm">Extensive industry knowledge and practical insights</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Achievement Badge -->
+                                <div class="mt-8 pt-8 border-t">
+                                    <div class="flex flex-col md:flex-row items-center bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mb-4 md:mb-0 md:mr-6">
+                                            <i class="fas fa-trophy text-white text-2xl"></i>
+                                        </div>
+                                        <div class="text-center md:text-left">
+                                            <h3 class="text-xl font-bold text-gray-800 mb-2">1000+ Professionals Mentored</h3>
+                                            <p class="text-gray-600">Successfully guided over a thousand individuals in their career journeys</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Philosophy Section -->
+                        <div class="animate-fadeInUp" style="animation-delay: 1s;">
+                            <div class="bg-gradient-to-r from-accent/10 to-blue-100 rounded-3xl p-8 border border-accent/20">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fas fa-lightbulb text-white text-xl"></i>
+                                    </div>
+                                    <h2 class="text-3xl font-bold text-primary">My Philosophy</h2>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center">
+                                        <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-heart text-accent"></i>
+                                        </div>
+                                        <h3 class="font-bold text-gray-800 mb-2">Empathy First</h3>
+                                        <p class="text-gray-600 text-sm">Understanding your unique journey before providing guidance</p>
+                                    </div>
+                                    <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center">
+                                        <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-hands-helping text-accent"></i>
+                                        </div>
+                                        <h3 class="font-bold text-gray-800 mb-2">Practical Solutions</h3>
+                                        <p class="text-gray-600 text-sm">Actionable advice tailored to real-world challenges</p>
+                                    </div>
+                                    <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center">
+                                        <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-seedling text-accent"></i>
+                                        </div>
+                                        <h3 class="font-bold text-gray-800 mb-2">Sustainable Growth</h3>
+                                        <p class="text-gray-600 text-sm">Building careers that thrive long-term, not just quick fixes</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
