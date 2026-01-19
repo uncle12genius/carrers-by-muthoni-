@@ -1,11 +1,31 @@
 <!-- Top Bar -->
 <div class="bg-[#60e0e4] text-white py-2 px-4">
-    <div class="container mx-auto flex justify-end">
-        <a href="/public/work-with-me/pick-my-brain.html"
-           class="text-xs hover:text-accent transition-all flex items-center">
-            <i class="fas fa-brain mr-2"></i> Pick my Brain on your career
-        </a>
-    </div>
+  <div class="container mx-auto flex justify-end">
+    <a href="/public/work-with-me/pick-my-brain.html"
+       class="text-xs bg-white text-[#36454F] px-4 py-2 rounded-md
+              hover:bg-gradient-to-r hover:from-[#60e0e4] hover:to-[#60e0e4]
+              hover:text-[#60e0e4] hover:shadow-lg hover:shadow-[#4dbbc0]/30
+              transform hover:-translate-y-1.5
+              active:scale-95
+              transition-all duration-300 ease-out
+              flex items-center group relative overflow-hidden">
+      
+      <!-- Animated background overlay -->
+      <span class="absolute inset-0 bg-gradient-to-r from-[#000000] to-[#3a9a9e] 
+                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
+      
+      <!-- Original white background (layered behind) -->
+      <span class="absolute inset-0 bg-white -z-10"></span>
+      
+      <!-- Icon and text -->
+      <i class="fas fa-brain mr-2 group-hover:rotate-12 transition-transform duration-500"></i>
+      <span class="relative">Pick my Brain on your career</span>
+      
+      <!-- Optional subtle shimmer effect -->
+      <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                   -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+    </a>
+  </div>
 </div>
 
 <!-- Main Navigation -->
@@ -26,104 +46,104 @@
             </a>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-5 text-sm">
+                    <div class="hidden md:flex items-center justify-center space-x-5 text-sm">
 
-                <!-- Mentorship Program Dropdown -->
-                <div class="dropdown relative group">
-                    <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
-                        Mentorship Program <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
-                    </button>
-                    <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
-                        <a href="/public/mentorship/high-school.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-school mr-2 text-gray-400"></i> High schools mentorship
-                        </a>
-                        <a href="/public/mentorship/college.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-university mr-2 text-gray-400"></i> College Mentorship
-                        </a>
-                        <a href="/public/mentorship/employment-accelerator.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-briefcase mr-2 text-gray-400"></i> Employment Accelerator Program
-                        </a>
-                    </div>
+            <!-- Mentorship Program Dropdown -->
+            <div class="dropdown relative group">
+                <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
+                    Mentorship Program <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
+                    <a href="/public/mentorship/high-school.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-school mr-2 text-gray-400"></i> High schools mentorship
+                    </a>
+                    <a href="/public/mentorship/college.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-university mr-2 text-gray-400"></i> College Mentorship
+                    </a>
+                    <a href="/public/mentorship/employment-accelerator.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-briefcase mr-2 text-gray-400"></i> Employment Accelerator Program
+                    </a>
                 </div>
-
-                <!-- Meet Muthoni Dropdown -->
-                <div class="dropdown relative group">
-                    <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
-                        Meet Muthoni <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
-                    </button>
-                    <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
-                        <a href="/public/about/muthoni.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-user mr-2 text-gray-400"></i> About Muthoni
-                        </a>
-                        <a href="/public/about/vision.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-eye mr-2 text-gray-400"></i> The Vision
-                        </a>
-                        <a href="/public/about/services.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-cogs mr-2 text-gray-400"></i> Services I Offer
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Work with Me Dropdown -->
-                <div class="dropdown relative group">
-                    <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
-                        Work with Me <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
-                    </button>
-                    <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
-                        <a href="/public/work-with-me/pick-my-brain.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-brain mr-2 text-gray-400"></i> Pick my brain
-                        </a>
-                        <a href="/public/work-with-me/teens-career-clarity.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-graduation-cap mr-2 text-gray-400"></i> Career clarity for Teens
-                        </a>
-                        <a href="/public/work-with-me/college-career-pathing.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-user-graduate mr-2 text-gray-400"></i> Career pathing for college students
-                        </a>
-                        <a href="/public/work-with-me/linkedin-branding.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fab fa-linkedin mr-2 text-gray-400"></i> LinkedIn branding for C suites
-                        </a>
-                        <a href="/public/work-with-me/rate-card.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-file-invoice-dollar mr-2 text-gray-400"></i> Get my Consultancy Rate Card
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Shop Dropdown -->
-                <div class="dropdown relative group">
-                    <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
-                        Shop <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
-                    </button>
-                    <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-48 z-50">
-                        <a href="/public/shop/ebook.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-book mr-2 text-gray-400"></i> Ebook
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Opportunities Dropdown -->
-                <div class="dropdown relative group">
-                    <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
-                        Opportunities <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
-                    </button>
-                    <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
-                        <a href="/public/opportunities/scholarships.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-award mr-2 text-gray-400"></i> Scholarships
-                        </a>
-                        <a href="/public/opportunities/jobs.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-briefcase mr-2 text-gray-400"></i> Entry level jobs
-                        </a>
-                        <a href="/public/opportunities/volunteer.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
-                            <i class="fas fa-hands-helping mr-2 text-gray-400"></i> Volunteer openings
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Contact Us -->
-                <a href="/public/contact.html"
-                   class="text-sm text-gray-700 hover:text-primary transition-all py-2">
-                    Contact Us
-                </a>
             </div>
+
+            <!-- Meet Muthoni Dropdown -->
+            <div class="dropdown relative group">
+                <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
+                    Meet Muthoni <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
+                    <a href="/public/about/muthoni.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-user mr-2 text-gray-400"></i> About Muthoni
+                    </a>
+                    <a href="/public/about/vision.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-eye mr-2 text-gray-400"></i> The Vision
+                    </a>
+                    <a href="/public/about/services.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-cogs mr-2 text-gray-400"></i> Services I Offer
+                    </a>
+                </div>
+            </div>
+
+            <!-- Work with Me Dropdown -->
+            <div class="dropdown relative group">
+                <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
+                    Work with Me <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
+                    <a href="/public/work-with-me/pick-my-brain.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-brain mr-2 text-gray-400"></i> Pick my brain
+                    </a>
+                    <a href="/public/work-with-me/teens-career-clarity.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-graduation-cap mr-2 text-gray-400"></i> Career clarity for Teens
+                    </a>
+                    <a href="/public/work-with-me/college-career-pathing.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-user-graduate mr-2 text-gray-400"></i> Career pathing for college students
+                    </a>
+                    <a href="/public/work-with-me/linkedin-branding.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fab fa-linkedin mr-2 text-gray-400"></i> LinkedIn branding for C suites
+                    </a>
+                    <a href="/public/work-with-me/rate-card.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-file-invoice-dollar mr-2 text-gray-400"></i> Get my Consultancy Rate Card
+                    </a>
+                </div>
+            </div>
+
+            <!-- Shop Dropdown -->
+            <div class="dropdown relative group">
+                <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
+                    Shop <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-48 z-50">
+                    <a href="/public/shop/ebook.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-book mr-2 text-gray-400"></i> Ebook
+                    </a>
+                </div>
+            </div>
+
+            <!-- Opportunities Dropdown -->
+            <div class="dropdown relative group">
+                <button class="flex items-center text-gray-700 hover:text-primary transition-all py-2">
+                    Opportunities <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 py-1 w-64 z-50">
+                    <a href="/public/opportunities/scholarships.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-award mr-2 text-gray-400"></i> Scholarships
+                    </a>
+                    <a href="/public/opportunities/jobs.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-briefcase mr-2 text-gray-400"></i> Entry level jobs
+                    </a>
+                    <a href="/public/opportunities/volunteer.html" class="block px-4 py-2 text-sm hover:bg-gray-50 transition-all">
+                        <i class="fas fa-hands-helping mr-2 text-gray-400"></i> Volunteer openings
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Us -->
+            <a href="/public/contact.html"
+            class="text-sm text-gray-700 hover:text-primary transition-all py-2 mr-5">
+                Contact Us
+            </a>
+               </div>
 
             <!-- Mobile menu button -->
             <button id="mobile-menu-button" class="md:hidden text-gray-700">
@@ -135,38 +155,65 @@
         <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-lg p-4 text-sm">
             <div class="space-y-2">
 
+                <!-- Mobile dropdown items with toggle functionality -->
                 <div class="border-b pb-2">
-                    <p class="font-semibold text-sm text-primary mb-2">Mentorship Program</p>
-                    <a href="/public/mentorship/high-school.html" class="block py-2 px-4 hover:bg-gray-50 rounded">High schools mentorship</a>
-                    <a href="/public/mentorship/college.html" class="block py-2 px-4 hover:bg-gray-50 rounded">College Mentorship</a>
-                    <a href="/public/mentorship/employment-accelerator.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Employment Accelerator</a>
+                    <button class="mobile-dropdown-toggle w-full flex justify-between items-center py-2 px-4 hover:bg-gray-50 rounded text-left">
+                        <span class="font-semibold text-sm text-primary">Mentorship Program</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-6">
+                        <a href="/public/mentorship/high-school.html" class="block py-2 px-4 hover:bg-gray-50 rounded">High schools mentorship</a>
+                        <a href="/public/mentorship/college.html" class="block py-2 px-4 hover:bg-gray-50 rounded">College Mentorship</a>
+                        <a href="/public/mentorship/employment-accelerator.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Employment Accelerator</a>
+                    </div>
                 </div>
 
                 <div class="border-b pb-2">
-                    <p class="font-semibold text-sm text-primary mb-2">Meet Muthoni</p>
-                    <a href="/public/about/muthoni.html" class="block py-2 px-4 hover:bg-gray-50 rounded">About Muthoni</a>
-                    <a href="/public/about/vision.html" class="block py-2 px-4 hover:bg-gray-50 rounded">The Vision</a>
-                    <a href="/public/about/services.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Services</a>
+                    <button class="mobile-dropdown-toggle w-full flex justify-between items-center py-2 px-4 hover:bg-gray-50 rounded text-left">
+                        <span class="font-semibold text-sm text-primary">Meet Muthoni</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-6">
+                        <a href="/public/about/muthoni.html" class="block py-2 px-4 hover:bg-gray-50 rounded">About Muthoni</a>
+                        <a href="/public/about/vision.html" class="block py-2 px-4 hover:bg-gray-50 rounded">The Vision</a>
+                        <a href="/public/about/services.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Services</a>
+                    </div>
                 </div>
 
                 <div class="border-b pb-2">
-                    <p class="font-semibold text-sm text-primary mb-2">Work with Me</p>
-                    <a href="/public/work-with-me/pick-my-brain.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Pick my brain</a>
-                    <a href="/public/work-with-me/teens-career-clarity.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Teens Career Clarity</a>
-                    <a href="/public/work-with-me/college-career-pathing.html" class="block py-2 px-4 hover:bg-gray-50 rounded">College Career Pathing</a>
-                    <a href="/public/work-with-me/linkedin-branding.html" class="block py-2 px-4 hover:bg-gray-50 rounded">LinkedIn Branding</a>
+                    <button class="mobile-dropdown-toggle w-full flex justify-between items-center py-2 px-4 hover:bg-gray-50 rounded text-left">
+                        <span class="font-semibold text-sm text-primary">Work with Me</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-6">
+                        <a href="/public/work-with-me/pick-my-brain.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Pick my brain</a>
+                        <a href="/public/work-with-me/teens-career-clarity.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Teens Career Clarity</a>
+                        <a href="/public/work-with-me/college-career-pathing.html" class="block py-2 px-4 hover:bg-gray-50 rounded">College Career Pathing</a>
+                        <a href="/public/work-with-me/linkedin-branding.html" class="block py-2 px-4 hover:bg-gray-50 rounded">LinkedIn Branding</a>
+                        <a href="/public/work-with-me/rate-card.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Get my Consultancy Rate Card</a>
+                    </div>
                 </div>
 
                 <div class="border-b pb-2">
-                    <p class="font-semibold text-sm text-primary mb-2">Shop</p>
-                    <a href="/public/shop/ebook.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Ebook</a>
+                    <button class="mobile-dropdown-toggle w-full flex justify-between items-center py-2 px-4 hover:bg-gray-50 rounded text-left">
+                        <span class="font-semibold text-sm text-primary">Shop</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-6">
+                        <a href="/public/shop/ebook.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Ebook</a>
+                    </div>
                 </div>
 
                 <div class="border-b pb-2">
-                    <p class="font-semibold text-sm text-primary mb-2">Opportunities</p>
-                    <a href="/public/opportunities/scholarships.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Scholarships</a>
-                    <a href="/public/opportunities/jobs.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Entry Level Jobs</a>
-                    <a href="/public/opportunities/volunteer.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Volunteer</a>
+                    <button class="mobile-dropdown-toggle w-full flex justify-between items-center py-2 px-4 hover:bg-gray-50 rounded text-left">
+                        <span class="font-semibold text-sm text-primary">Opportunities</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-6">
+                        <a href="/public/opportunities/scholarships.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Scholarships</a>
+                        <a href="/public/opportunities/jobs.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Entry Level Jobs</a>
+                        <a href="/public/opportunities/volunteer.html" class="block py-2 px-4 hover:bg-gray-50 rounded">Volunteer</a>
+                    </div>
                 </div>
 
                 <a href="/public/contact.html"
@@ -178,3 +225,71 @@
         </div>
     </div>
 </nav>
+
+<!-- Add this JavaScript to handle mobile dropdowns -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle main mobile menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Change icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars text-xl';
+            } else {
+                icon.className = 'fas fa-times text-xl';
+            }
+        });
+    }
+    
+    // Toggle mobile dropdown items
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('i');
+            
+            // Toggle current dropdown
+            content.classList.toggle('hidden');
+            
+            // Rotate icon
+            if (content.classList.contains('hidden')) {
+                icon.className = 'fas fa-chevron-down text-xs';
+            } else {
+                icon.className = 'fas fa-chevron-up text-xs';
+            }
+            
+            // Close other dropdowns (optional)
+            dropdownToggles.forEach(otherToggle => {
+                if (otherToggle !== toggle) {
+                    const otherContent = otherToggle.nextElementSibling;
+                    const otherIcon = otherToggle.querySelector('i');
+                    
+                    if (!otherContent.classList.contains('hidden')) {
+                        otherContent.classList.add('hidden');
+                        otherIcon.className = 'fas fa-chevron-down text-xs';
+                    }
+                }
+            });
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickOnButton = mobileMenuButton.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            const icon = mobileMenuButton.querySelector('i');
+            icon.className = 'fas fa-bars text-xl';
+        }
+    });
+});
+</script>
