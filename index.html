@@ -120,109 +120,186 @@
         </section>
 
     <!-- Numbered Sections -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="flex items-start p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#60e0e4] text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
-                        1
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-[#60e0e4]">Muthoni's Vision</h3>
-                        <p class="text-gray-600 mb-4">Discover the inspiring vision behind CareerBuild Mentors and our mission to transform careers.</p>
-                        <a href="/public/about/vision.html" class="text-accent font-semibold hover:underline inline-flex items-center">
-                            Read <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+    <section class="py-8 sm:py-12 md:py-16 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+    <!-- Background decorative elements - hidden on mobile -->
+    <div class="hidden sm:block absolute top-0 left-0 w-32 h-32 md:w-64 md:h-64 bg-[#60e0e4] opacity-5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="hidden sm:block absolute bottom-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-[#60e0e4] opacity-5 rounded-full translate-x-1/3 translate-y-1/3"></div>
+    
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <!-- Enhanced header -->
+        <div class="text-center mb-8 sm:mb-12">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">Explore CareerBuild Journey</h2>
+            <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-2 sm:px-0">Discover resources, insights, and opportunities designed to accelerate your career growth</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <!-- Item 1 - Mobile optimized -->
+            <div class="group relative bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0]"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#60e0e4] to-[#3a9ca0] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold mr-3 sm:mr-4 shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                            <span class="group-hover:rotate-12 transition-transform duration-300">1</span>
+                        </div>
+                        <div class="flex-1 min-w-0"> <!-- Added min-w-0 for text truncation -->
+                            <div class="flex items-center gap-2 mb-1 sm:mb-2">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-800 group-hover:text-[#60e0e4] transition-colors truncate">Muthoni's Vision</h3>
+                                <i class="fas fa-lightbulb text-yellow-400 text-sm sm:text-lg flex-shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3">Discover the inspiring vision behind CareerBuild Mentors and our mission to transform careers.</p>
+                            <a href="/public/about/vision.html" class="inline-flex items-center text-[#60e0e4] font-semibold text-sm sm:text-base group/link">
+                                <span class="group-hover/link:underline truncate">Read More</span>
+                                <i class="fas fa-arrow-right ml-2 sm:ml-3 group-hover/link:translate-x-1 sm:group-hover/link:translate-x-2 transition-transform duration-300 flex-shrink-0"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Item 2 -->
-                <div class="flex items-start p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#60e0e4] text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
-                        2
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-[#60e0e4]">Partner Brands</h3>
-                        <p class="text-gray-600 mb-4">Explore our network of partner companies and organizations committed to career development.</p>
-                        <a href="#" class="text-accent font-semibold hover:underline inline-flex items-center">
-                            View <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+            <!-- Repeat same mobile-optimized structure for other items -->
+            <!-- Item 2 -->
+            <div class="group relative bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0]"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#60e0e4] to-[#3a9ca0] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold mr-3 sm:mr-4 shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                            <span class="group-hover:rotate-12 transition-transform duration-300">2</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1 sm:mb-2">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-800 group-hover:text-[#60e0e4] transition-colors truncate">Partner Brands</h3>
+                                <i class="fas fa-handshake text-green-400 text-sm sm:text-lg flex-shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3">Explore our network of partner companies and organizations committed to career development.</p>
+                            <a href="#" class="inline-flex items-center text-[#60e0e4] font-semibold text-sm sm:text-base group/link">
+                                <span class="group-hover/link:underline truncate">View Partners</span>
+                                <i class="fas fa-arrow-right ml-2 sm:ml-3 group-hover/link:translate-x-1 sm:group-hover/link:translate-x-2 transition-transform duration-300 flex-shrink-0"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Item 3 -->
-                <div class="flex items-start p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#60e0e4] text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
-                        3
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-[#60e0e4]">Media</h3>
-                        <p class="text-gray-600 mb-4">Access our collection of articles, interviews, and resources on career development.</p>
-                        <a href="/public/media/blog.html" class="text-accent font-semibold hover:underline inline-flex items-center">
-                            Explore <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+            <!-- Item 3 -->
+            <div class="group relative bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0]"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#60e0e4] to-[#3a9ca0] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold mr-3 sm:mr-4 shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                            <span class="group-hover:rotate-12 transition-transform duration-300">3</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1 sm:mb-2">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-800 group-hover:text-[#60e0e4] transition-colors truncate">Media Hub</h3>
+                                <i class="fas fa-newspaper text-red-400 text-sm sm:text-lg flex-shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3">Access our collection of articles, interviews, and resources on career development.</p>
+                            <a href="/public/media/blog.html" class="inline-flex items-center text-[#60e0e4] font-semibold text-sm sm:text-base group/link">
+                                <span class="group-hover/link:underline truncate">Explore Media</span>
+                                <i class="fas fa-arrow-right ml-2 sm:ml-3 group-hover/link:translate-x-1 sm:group-hover/link:translate-x-2 transition-transform duration-300 flex-shrink-0"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Item 4 -->
-                <div class="flex items-start p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#60e0e4] text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
-                        4
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-[#60e0e4]">Events</h3>
-                        <p class="text-gray-600 mb-4">Join our upcoming workshops, webinars, and networking events.</p>
-                        <a href="/public/media/events.html" class="text-accent font-semibold hover:underline inline-flex items-center">
-                            Explore <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+            <!-- Item 4 -->
+            <div class="group relative bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0]"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#60e0e4] to-[#3a9ca0] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold mr-3 sm:mr-4 shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                            <span class="group-hover:rotate-12 transition-transform duration-300">4</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1 sm:mb-2">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-800 group-hover:text-[#60e0e4] transition-colors truncate">Events</h3>
+                                <i class="fas fa-calendar-alt text-purple-400 text-sm sm:text-lg flex-shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3">Join our upcoming workshops, webinars, and networking events.</p>
+                            <a href="/public/media/events.html" class="inline-flex items-center text-[#60e0e4] font-semibold text-sm sm:text-base group/link">
+                                <span class="group-hover/link:underline truncate">View Events</span>
+                                <i class="fas fa-arrow-right ml-2 sm:ml-3 group-hover/link:translate-x-1 sm:group-hover/link:translate-x-2 transition-transform duration-300 flex-shrink-0"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Item 5 -->
-                <div class="flex items-start p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#60e0e4] text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
-                        5
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-[#60e0e4]">Conversations with Muthoni</h3>
-                        <p class="text-gray-600 mb-4">Watch insightful video interviews on career growth and industry trends.</p>
-                        <a href="/public/media/conversations.html" class="text-accent font-semibold hover:underline inline-flex items-center">
-                            Explore <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+            <!-- Item 5 -->
+            <div class="group relative bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0]"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#60e0e4] to-[#3a9ca0] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold mr-3 sm:mr-4 shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                            <span class="group-hover:rotate-12 transition-transform duration-300">5</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1 sm:mb-2">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-800 group-hover:text-[#60e0e4] transition-colors truncate">Conversations</h3>
+                                <i class="fas fa-video text-blue-400 text-sm sm:text-lg flex-shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3">Watch insightful video interviews on career growth and industry trends.</p>
+                            <a href="/public/media/conversations.html" class="inline-flex items-center text-[#60e0e4] font-semibold text-sm sm:text-base group/link">
+                                <span class="group-hover/link:underline truncate">Watch Videos</span>
+                                <i class="fas fa-arrow-right ml-2 sm:ml-3 group-hover/link:translate-x-1 sm:group-hover/link:translate-x-2 transition-transform duration-300 flex-shrink-0"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Item 6 -->
-                <div class="flex items-start p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#60e0e4] text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
-                        6
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-[#60e0e4]">Work with Me</h3>
-                        <p class="text-gray-600 mb-4">Get personalized career coaching and consulting services.</p>
-                        <a href="/public/contact.html" class="text-accent font-semibold hover:underline inline-flex items-center">
-                            Contact Me <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+            <!-- Item 6 - Highlighted CTA -->
+            <div class="group relative bg-gradient-to-br from-[#60e0e4]/10 to-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 border border-[#60e0e4]/20 overflow-hidden transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0]"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#60e0e4] to-[#3a9ca0] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold mr-3 sm:mr-4 shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                            <span class="group-hover:rotate-12 transition-transform duration-300">6</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1 sm:mb-2">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-800 group-hover:text-[#60e0e4] transition-colors truncate">Work With Me</h3>
+                                <i class="fas fa-star text-yellow-400 text-sm sm:text-lg flex-shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3">Get personalized career coaching and consulting services.</p>
+                            <a href="/public/contact.html" class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0] text-white font-semibold text-sm sm:text-base rounded-lg sm:rounded-lg group/link hover:shadow-lg transition-all duration-300 w-full sm:w-auto justify-center">
+                                <span class="truncate">Contact Me</span>
+                                <i class="fas fa-arrow-right ml-2 sm:ml-3 group-hover/link:translate-x-1 sm:group-hover/link:translate-x-2 transition-transform duration-300 flex-shrink-0"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Item 7 -->
-                <div class="flex items-start p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100">
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#60e0e4] text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
-                        7
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-[#60e0e4]">Blog</h3>
-                        <p class="text-gray-600 mb-4">Read our latest articles on career development, job search, and professional growth.</p>
-                        <a href="/public/media/blog.html" class="text-accent font-semibold hover:underline inline-flex items-center">
-                            Explore <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+            <!-- Item 7 -->
+            <div class="group relative bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#60e0e4] to-[#3a9ca0]"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#60e0e4] to-[#3a9ca0] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold mr-3 sm:mr-4 shadow-lg group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300">
+                            <span class="group-hover:rotate-12 transition-transform duration-300">7</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1 sm:mb-2">
+                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-800 group-hover:text-[#60e0e4] transition-colors truncate">Latest Blog</h3>
+                                <i class="fas fa-pen-nib text-indigo-400 text-sm sm:text-lg flex-shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3">Read our latest articles on career development, job search, and professional growth.</p>
+                            <a href="/public/media/blog.html" class="inline-flex items-center text-[#60e0e4] font-semibold text-sm sm:text-base group/link">
+                                <span class="group-hover/link:underline truncate">Read Blog</span>
+                                <i class="fas fa-arrow-right ml-2 sm:ml-3 group-hover/link:translate-x-1 sm:group-hover/link:translate-x-2 transition-transform duration-300 flex-shrink-0"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+       
+        </div>
+    </div>
+</section>
 
     <!-- CTA Section -->
     <div id="cta-container"></div>
